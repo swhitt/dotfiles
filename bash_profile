@@ -1,14 +1,14 @@
 export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "(%s)")\$ '
 
 export PATH="~/bin:/usr/local/bin:/usr/local/oracle/instantclient_10_2:$PATH"
-export EDITOR='mate -w'
+export EDITOR='subl -w'
 export CC=gcc-4.2
 
 # git-specific
 alias gst='git status'
 alias gl='git pull'
 alias gp='git push'
-alias gd='git diff | mate'
+alias gd='git diff | subl -n -b'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gb='git branch'
