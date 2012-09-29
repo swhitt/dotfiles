@@ -1,8 +1,12 @@
 export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "(%s)")\$ '
 
-export PATH="~/bin:/usr/local/bin:/usr/local/oracle/instantclient_10_2:$PATH"
+export PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/oracle/instantclient_10_2:/usr/local/share/python:$PATH"
 export EDITOR='subl -w'
 export CC=gcc-4.2
+export NLS_LANG="AMERICAN_AMERICA.UTF8"
+export DYLD_LIBRARY_PATH=/usr/local/sbin:/usr/local/oracle/instantclient_10_2
+# Hack to use 32-bit ruby for oracle, see rvmrc in a oracle project for details
+export USE_32BIT_FOR_ORACLE=true
 
 # git-specific
 alias gst='git status'
@@ -16,12 +20,19 @@ alias gba='git branch -a'
 alias git=hub
 
 # load git completion aliases from homebrew
-. `brew --prefix git`/etc/bash_completion.d/git-completion.bash
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+. /usr/local/etc/bash_completion.d/git-completion.bash
+. /usr/local/etc/bash_completion.d/git-prompt.sh
+. /usr/local/etc/bash_completion.d/ack.bash_completion.sh
+
+
 
 # use the colors
 alias ls='ls -G'
 
-# shortcuts
+# z - see https://github.com/rupa/z
 . `brew --prefix`/etc/profile.d/z.sh
 
 
